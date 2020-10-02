@@ -1,13 +1,26 @@
 package org.launchcode.spaday.models;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class User {
+
+    @NotBlank(message = "Username cannot be empty")
+    @Size(min = 5, max = 15)
     private String username;
+
+    @Email
     private String email;
+
+    @NotNull
+    @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
 
-    public User() {
-
-    }
+    @Valid
+    public User() { }
 
     public User(String username, String email, String password) {
         this();
